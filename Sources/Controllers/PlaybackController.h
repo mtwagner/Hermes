@@ -41,6 +41,7 @@
   BOOL scrobbleSent;
   NSString *lastImgSrc;
   NSData *lastImg;
+  BOOL appWasInactive;
 }
 
 @property (readonly) Station *playing;

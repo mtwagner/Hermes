@@ -22,16 +22,22 @@
 }
 
 - (NSString*) urlEncoded {
-  NSString *encoded = (__bridge_transfer NSString*) CFURLCreateStringByAddingPercentEscapes(NULL,
-    (__bridge CFStringRef) self, NULL,
-    (CFStringRef) @"!*'();:@&=+$,/?%#[]",
-    kCFStringEncodingUTF8 );
-  return encoded;
+  NSMutableCharacterSet *allowed =
+      [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
+  [allowed removeCharactersInString:@"!*'();:@&=+$,/?%#[]"];
+  return [self stringByAddingPercentEncodingWithAllowedCharacters:allowed];
 }
 
 - (NSString *)md5sum {
   unsigned char digest[CC_MD5_DIGEST_LENGTH], i;
-  CC_MD5([self UTF8String], (uint32_t)[self lengthOfBytesUsingEncoding:NSUTF8StringEncoding], digest);
+  // Last.fm requires MD5 for its API signatures, so changing the algorithm
+  // would break authentication even though CommonCrypto marks MD5 deprecated.
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+  CC_MD5([self UTF8String],
+         (CC_LONG)[self lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+         digest);
+#pragma clang diagnostic pop
   NSMutableString *ms = [NSMutableString string];
   for (i=0;i<CC_MD5_DIGEST_LENGTH;i++) {
     [ms appendFormat: @"%02x", (int)(digest[i])];

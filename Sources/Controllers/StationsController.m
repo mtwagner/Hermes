@@ -9,6 +9,8 @@
 #define SORT_NAME 0
 #define SORT_DATE 1
 
+static const CGFloat PANEL_BORDER_WIDTH = 3.0;
+
 @implementation StationsController
 
 - (id) init {
@@ -57,7 +59,15 @@
 
 - (void) awakeFromNib {
   [super awakeFromNib];
-  stations.contentView.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+  stations.styleMask = NSWindowStyleMaskBorderless;
+  stations.movableByWindowBackground = NO;
+  stations.hasShadow = YES;
+  stations.contentView.wantsLayer = YES;
+  stations.contentView.layer.borderWidth = PANEL_BORDER_WIDTH;
+  stations.contentView.layer.borderColor = NSColor.separatorColor.CGColor;
+  stations.contentView.layer.cornerRadius = 0.0;
+  stations.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+  stations.delegate = self;
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
@@ -96,15 +106,39 @@
 
 - (void) showDrawer {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  NSSize s;
-  s.height = 100;
-  s.width = [defaults integerForKey:DRAWER_WIDTH];
-  [stations open];
-  [stations setContentSize:s];
+  NSInteger savedWidth = [defaults integerForKey:DRAWER_WIDTH];
+  if (savedWidth > 0) {
+    NSSize contentSize = stations.contentView.frame.size;
+    contentSize.width = savedWidth;
+    [stations setContentSize:contentSize];
+  }
+
+  NSWindow *mainWindow = [HMSAppDelegate window];
+  NSRect mainFrame = mainWindow.frame;
+  NSRect panelFrame = stations.frame;
+  panelFrame.size.height = NSHeight(mainFrame) * 0.8;
+  [stations setFrame:panelFrame display:YES];
+  panelFrame = stations.frame;
+  NSRect visibleFrame = (mainWindow.screen ?: NSScreen.mainScreen).visibleFrame;
+  CGFloat panelX = NSMaxX(mainFrame) - PANEL_BORDER_WIDTH;
+  if (panelX + NSWidth(panelFrame) > NSMaxX(visibleFrame)) {
+    panelX = NSMinX(mainFrame) - NSWidth(panelFrame) + PANEL_BORDER_WIDTH;
+  }
+  CGFloat panelY = NSMidY(mainFrame) - NSHeight(panelFrame) / 2.0;
+  panelY = MAX(NSMinY(visibleFrame),
+               MIN(panelY, NSMaxY(visibleFrame) - NSHeight(panelFrame)));
+  [stations setFrameOrigin:NSMakePoint(panelX, panelY)];
+
+  if (stations.parentWindow != mainWindow) {
+    [stations.parentWindow removeChildWindow:stations];
+    [mainWindow addChildWindow:stations ordered:NSWindowBelow];
+  }
+  [stations makeKeyAndOrderFront:nil];
   [self focus];
 }
 
 - (void) hideDrawer {
+  [stations.parentWindow removeChildWindow:stations];
   [stations close];
 }
 
@@ -115,7 +149,7 @@
 }
 
 - (void) focus {
-  [[stations parentWindow] makeFirstResponder:stationsTable];
+  [stations makeFirstResponder:stationsTable];
 }
 
 - (int) stationIndex:(Station *)station {
@@ -173,7 +207,10 @@
       reader = [FileReader readerForFile:saved_state
                        completionHandler:^(NSData *data, NSError *err) {
         if (err == nil) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
           Station *s = [NSKeyedUnarchiver unarchiveObjectWithFile:saved_state];
+#pragma clang diagnostic pop
           if ([last isEqual:s]) {
             last = s;
             [last setRadio:[self pandora]];
@@ -192,15 +229,16 @@
   return YES;
 }
 
-#pragma mark - NSDrawerDelegate
+#pragma mark - NSWindowDelegate
 
-- (NSSize) drawerWillResizeContents:(NSDrawer*) drawer toSize:(NSSize) size {
+- (void)windowDidResize:(NSNotification *)notification {
+  if (notification.object != stations) return;
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  [defaults setInteger:size.width forKey:DRAWER_WIDTH];
-  return size;
+  [defaults setInteger:stations.contentView.frame.size.width forKey:DRAWER_WIDTH];
 }
 
-- (void)drawerWillClose:(NSNotification *)notification {
+- (void)windowWillClose:(NSNotification *)notification {
+  if (notification.object != stations) return;
   PREF_KEY_SET_INT(OPEN_DRAWER, DRAWER_NONE_STA);
 }
 

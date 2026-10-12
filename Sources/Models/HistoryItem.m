@@ -21,7 +21,7 @@
   HistoryView *view = (HistoryView*) [self view];
   [view setSelected:selected];
   [view setNeedsDisplay:YES];
-  HistoryController *hc = [[self collectionView] delegate];
+  HistoryController *hc = (HistoryController *)[[self collectionView] delegate];
   [hc updateUI];
 }
 

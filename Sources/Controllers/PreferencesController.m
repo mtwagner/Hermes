@@ -17,18 +17,13 @@
   [window setCanHide:NO];
 
   if (PREF_KEY_BOOL(STATUS_BAR_ICON_BW))
-    statusItemShowBlackAndWhiteIcon.state = NSOnState;
+    statusItemShowBlackAndWhiteIcon.state = NSControlStateValueOn;
   else if (PREF_KEY_BOOL(STATUS_BAR_ICON_ALBUM))
-    statusItemShowAlbumArt.state = NSOnState;
+    statusItemShowAlbumArt.state = NSControlStateValueOn;
   else
-    statusItemShowColorIcon.state = NSOnState;
+    statusItemShowColorIcon.state = NSControlStateValueOn;
 
   NSString *last = PREF_KEY_VALUE(LAST_PREF_PANE);
-  if (NSClassFromString(@"NSUserNotification") != nil) {
-    [notificationEnabled setTitle:@""];
-    [notificationType setHidden:NO];
-  }
-
   if (itemIdentifiers == nil) {
     itemIdentifiers = [[toolbar items] valueForKey:@"itemIdentifier"];
   }
@@ -143,8 +138,8 @@
 
 - (IBAction)proxySettingsChanged:(id)sender {
   BOOL proxyValid = NO;
-  NSString *proxyHost;
-  NSInteger proxyPort;
+  NSString *proxyHost = nil;
+  NSInteger proxyPort = 0;
 
   switch (PREF_KEY_INT(ENABLED_PROXY)) {
     case PROXY_SYSTEM:

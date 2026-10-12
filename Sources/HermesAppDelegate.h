@@ -13,13 +13,16 @@
 @class HistoryController;
 @class StationController;
 @class PandoraRequest;
-@class Growler;
+@class Notifier;
 @class Scrobbler;
 @class SPMediaKeyTap;
 @class NetworkConnection;
 @class PreferencesController;
 
-@interface HermesAppDelegate : NSObject <NSApplicationDelegate> {
+@interface HermesAppDelegate : NSObject <NSApplicationDelegate,
+                                         NSMenuItemValidation,
+                                         NSWindowRestoration,
+                                         NSToolbarItemValidation> {
   /* Generic loading view */
   IBOutlet NSView *loadingView;
   IBOutlet NSProgressIndicator *loadingIcon;
@@ -51,7 +54,7 @@
 @property (readonly) IBOutlet AuthController *auth;
 @property (readonly) IBOutlet PlaybackController *playback;
 @property (readonly) IBOutlet StationController *station;
-@property (readonly) IBOutlet Growler *growler;
+@property (readonly) IBOutlet Notifier *notifier;
 @property (readonly) IBOutlet Scrobbler *scrobbler;
 @property (readonly) IBOutlet NetworkConnection *networkManager;
 @property (readonly) IBOutlet PreferencesController *preferences;

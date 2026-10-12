@@ -15,13 +15,35 @@
 
 #define HISTORY_LIMIT 20
 
+static const CGFloat PANEL_BORDER_WIDTH = 3.0;
+
 @implementation HistoryController
 
 @synthesize songs, controller;
 
+- (void)updateCollectionItemWidth {
+  CGFloat width = NSWidth(collection.enclosingScrollView.contentView.bounds);
+  if (width <= 0.0) return;
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+  NSSize itemSize = NSMakeSize(width, 41.0);
+  [collection setMinItemSize:itemSize];
+  [collection setMaxItemSize:itemSize];
+#pragma clang diagnostic pop
+}
+
 - (void) awakeFromNib {
   [super awakeFromNib];
-  drawer.contentView.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+  historyPanel.styleMask = NSWindowStyleMaskBorderless;
+  historyPanel.movableByWindowBackground = NO;
+  historyPanel.hasShadow = YES;
+  historyPanel.contentView.wantsLayer = YES;
+  historyPanel.contentView.layer.borderWidth = PANEL_BORDER_WIDTH;
+  historyPanel.contentView.layer.borderColor = NSColor.separatorColor.CGColor;
+  historyPanel.contentView.layer.cornerRadius = 0.0;
+  historyPanel.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+  historyPanel.delegate = self;
 }
 
 - (void) loadSavedSongs {
@@ -33,7 +55,11 @@
     if (err) return;
     assert(data != nil);
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    // Keep reading existing history files until Song adopts NSSecureCoding.
     NSArray *s = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+#pragma clang diagnostic pop
     for (Song *song in s) {
       if ([self->songs indexOfObject:song] == NSNotFound)
         [self->controller addObject:song];
@@ -76,7 +102,12 @@
     return NO;
   }
 
-  return [NSKeyedArchiver archiveRootObject:songs toFile:path];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+  // Preserve compatibility with existing history files for now.
+  BOOL saved = [NSKeyedArchiver archiveRootObject:songs toFile:path];
+#pragma clang diagnostic pop
+  return saved;
 }
 
 - (Song*) selectedItem {
@@ -115,16 +146,16 @@
   }
 
   if (rating == -1) {
-    [like setState:NSOffState];
-    [dislike setState:NSOnState];
+    [like setState:NSControlStateValueOff];
+    [dislike setState:NSControlStateValueOn];
   }
   else if (rating == 0) {
-    [like setState:NSOffState];
-    [dislike setState:NSOffState];
+    [like setState:NSControlStateValueOff];
+    [dislike setState:NSControlStateValueOff];
   }
   else if (rating == 1) {
-    [like setState:NSOnState];
-    [dislike setState:NSOffState];
+    [like setState:NSControlStateValueOn];
+    [dislike setState:NSControlStateValueOff];
   }
 }
 
@@ -161,35 +192,60 @@
   [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
-- (NSSize) drawerWillResizeContents:(NSDrawer*) drawer toSize:(NSSize) size {
+- (void)windowDidResize:(NSNotification *)notification {
+  if (notification.object != historyPanel) return;
+  [self updateCollectionItemWidth];
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  [defaults setInteger:size.width forKey:HIST_DRAWER_WIDTH];
-  return size;
+  [defaults setInteger:historyPanel.contentView.frame.size.width
+                forKey:HIST_DRAWER_WIDTH];
 }
 
-- (void)drawerWillClose:(NSNotification *)notification {
+- (void)windowWillClose:(NSNotification *)notification {
+  if (notification.object != historyPanel) return;
   PREF_KEY_SET_INT(OPEN_DRAWER, DRAWER_NONE_HIST);
 }
 
 - (void) showDrawer {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  NSSize s;
-  s.height = 100;
-  s.width = [defaults integerForKey:HIST_DRAWER_WIDTH];
+  NSInteger savedWidth = [defaults integerForKey:HIST_DRAWER_WIDTH];
+  if (savedWidth > 0) {
+    NSSize contentSize = historyPanel.contentView.frame.size;
+    contentSize.width = savedWidth;
+    [historyPanel setContentSize:contentSize];
+  }
+  [self updateCollectionItemWidth];
 
-  [drawer open];
-  [drawer setContentSize:s];
-  [collection setMaxItemSize:NSMakeSize(227, 41)];
-  [collection setMinItemSize:NSMakeSize(40, 41)];
+  NSWindow *mainWindow = [HMSAppDelegate window];
+  NSRect mainFrame = mainWindow.frame;
+  NSRect panelFrame = historyPanel.frame;
+  panelFrame.size.height = NSHeight(mainFrame) * 0.8;
+  [historyPanel setFrame:panelFrame display:YES];
+  panelFrame = historyPanel.frame;
+  NSRect visibleFrame = (mainWindow.screen ?: NSScreen.mainScreen).visibleFrame;
+  CGFloat panelX = NSMaxX(mainFrame) - PANEL_BORDER_WIDTH;
+  if (panelX + NSWidth(panelFrame) > NSMaxX(visibleFrame)) {
+    panelX = NSMinX(mainFrame) - NSWidth(panelFrame) + PANEL_BORDER_WIDTH;
+  }
+  CGFloat panelY = NSMidY(mainFrame) - NSHeight(panelFrame) / 2.0;
+  panelY = MAX(NSMinY(visibleFrame),
+               MIN(panelY, NSMaxY(visibleFrame) - NSHeight(panelFrame)));
+  [historyPanel setFrameOrigin:NSMakePoint(panelX, panelY)];
+
+  if (historyPanel.parentWindow != mainWindow) {
+    [historyPanel.parentWindow removeChildWindow:historyPanel];
+    [mainWindow addChildWindow:historyPanel ordered:NSWindowBelow];
+  }
+  [historyPanel makeKeyAndOrderFront:nil];
   [self focus];
 }
 
 - (void) hideDrawer {
-  [drawer close];
+  [historyPanel.parentWindow removeChildWindow:historyPanel];
+  [historyPanel close];
 }
 
 - (void) focus {
-  [[drawer parentWindow] makeFirstResponder:collection];
+  [historyPanel makeFirstResponder:collection];
 }
 
 - (IBAction) showLyrics:(id)sender {

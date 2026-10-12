@@ -3,11 +3,14 @@
 @class FileReader;
 @class Station;
 
-@interface StationsController : NSObject <NSTableViewDataSource, NSOutlineViewDataSource> {
+@interface StationsController : NSObject <NSTableViewDataSource,
+                                          NSOutlineViewDataSource,
+                                          NSMenuItemValidation,
+                                          NSWindowDelegate> {
 
   IBOutlet NSView *chooseStationView;
 
-  IBOutlet NSDrawer *stations;
+  IBOutlet NSPanel *stations;
   IBOutlet NSTableView *stationsTable;
   IBOutlet NSProgressIndicator *stationsRefreshing;
 

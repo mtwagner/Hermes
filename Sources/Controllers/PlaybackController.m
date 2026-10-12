@@ -11,7 +11,7 @@
 #import <SPMediaKeyTap/SPMediaKeyTap.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-#import "Integration/Growler.h"
+#import "Integration/Notifier.h"
 #import "HistoryController.h"
 #import "ImageLoader.h"
 #import "PlaybackController.h"
@@ -256,7 +256,12 @@ BOOL playOnStart = YES;
     return NO;
   }
 
-  return [NSKeyedArchiver archiveRootObject:[self playing] toFile:path];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+  // Preserve compatibility until Station adopts NSSecureCoding.
+  BOOL saved = [NSKeyedArchiver archiveRootObject:[self playing] toFile:path];
+#pragma clang diagnostic pop
+  return saved;
 }
 
 /* Called whenever the playing stream changes state */
@@ -337,7 +342,7 @@ BOOL playOnStart = YES;
     if ([song art] == nil || [[song art] isEqual: @""]) {
       [self setArtImage:nil];
       if (![self->playing isPaused])
-        [GROWLER growl:song withImage:nil isNew:YES];
+        [NOTIFIER notify:song withImage:nil isNew:YES];
     } else {
       [artLoading startAnimation:nil];
       [artLoading setHidden:NO];
@@ -355,7 +360,7 @@ BOOL playOnStart = YES;
         [HMSAppDelegate updateStatusItem:nil];
 
         if (![self->playing isPaused]) {
-          [GROWLER growl:song withImage:data isNew:YES];
+          [NOTIFIER notify:song withImage:data isNew:YES];
         }
         [self setArtImage:image];
       }];
@@ -430,7 +435,7 @@ BOOL playOnStart = YES;
     return NO;
   } else {
     [playing play];
-    [GROWLER growl:[playing playingSong] withImage:lastImg isNew:NO];
+    [NOTIFIER notify:[playing playingSong] withImage:lastImg isNew:NO];
     return YES;
   }
 }
@@ -667,13 +672,15 @@ BOOL playOnStart = YES;
     if (song && ![playing shared]) {
       NSInteger rating = [[song nrating] integerValue];
       if (action == @selector(like:)) {
-        [menuItem setState:rating == 1 ? NSOnState : NSOffState];
+        [menuItem setState:rating == 1 ? NSControlStateValueOn
+                                           : NSControlStateValueOff];
       } else {
-        [menuItem setState:rating == -1 ? NSOnState : NSOffState];
+        [menuItem setState:rating == -1 ? NSControlStateValueOn
+                                            : NSControlStateValueOff];
       }
       return YES;
     } else {
-      [menuItem setState:NSOffState];
+      [menuItem setState:NSControlStateValueOff];
       return NO;
     }
   }

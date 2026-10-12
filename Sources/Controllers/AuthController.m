@@ -7,6 +7,16 @@
 
 @implementation AuthController
 
+- (void)updateLoginEnabled {
+  NSPredicate *emailTest =
+      [NSPredicate predicateWithFormat:@"SELF MATCHES %@", ROUGH_EMAIL_REGEX];
+
+  [login setEnabled:
+      [spinner isHidden] &&
+      [emailTest evaluateWithObject:[username stringValue]] &&
+      ![[password stringValue] isEqualToString:@""]];
+}
+
 - (id) init {
   NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 
@@ -44,8 +54,7 @@
   } else {
     [password becomeFirstResponder];
   }
-  NSNotification *emptyNotification;
-  [self controlTextDidChange:emptyNotification];
+  [self updateLoginEnabled];
 }
 
 - (void) authenticationSucceeded: (NSNotification*) notification {
@@ -79,8 +88,7 @@
   [HMSAppDelegate setCurrentView:view];
   [username becomeFirstResponder];
   
-  NSNotification *emptyNotification;
-  [self controlTextDidChange:emptyNotification];
+  [self updateLoginEnabled];
 }
 
 /* Log out the current session */
@@ -91,12 +99,7 @@
 }
 
 - (void)controlTextDidChange:(NSNotification *)obj {
-  NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", ROUGH_EMAIL_REGEX];
-  
-  [login setEnabled:
-   [spinner isHidden] &&
-   [emailTest evaluateWithObject:[username stringValue]] &&
-   ![[password stringValue] isEqualToString:@""]];
+  [self updateLoginEnabled];
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {

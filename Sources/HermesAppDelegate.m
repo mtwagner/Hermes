@@ -34,7 +34,7 @@
 @implementation HermesAppDelegate
 
 @synthesize stations, auth, playback, pandora, window, history, station,
-            growler, scrobbler, networkManager, preferences;
+            notifier, scrobbler, networkManager, preferences;
 
 - (id) init {
   if ((self = [super init])) {
@@ -86,7 +86,7 @@
                       keyEquivalent:@""];
   [menuItem setTarget:playback];
   if ([[song nrating] intValue] == 1) {
-    menuItem.state = NSOnState;
+    menuItem.state = NSControlStateValueOn;
   }
   menuItem = [menu addItemWithTitle:@"Dislike"
                              action:@selector(dislike:)
@@ -187,8 +187,13 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-  NSUInteger flags = ([NSEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
-  BOOL isOptionPressed = (flags == NSAlternateKeyMask);
+  NSUInteger flags = ([NSEvent modifierFlags] &
+                      NSEventModifierFlagDeviceIndependentFlagsMask);
+  BOOL isOptionPressed = (flags == NSEventModifierFlagOption);
+
+  // Keep the controls in their own row. The automatic modern toolbar style
+  // collapses every item into overflow in Hermes' narrow main window.
+  window.toolbarStyle = NSWindowToolbarStyleExpanded;
   
   if (isOptionPressed && [self configureLogFile]) {
     _debugMode = YES;
@@ -247,9 +252,8 @@
     PROXY_AUDIO:                @"0",
     DESIRED_QUALITY:            @QUALITY_MED,
     OPEN_DRAWER:                @DRAWER_STATIONS,
-    HIST_DRAWER_WIDTH:          @150,
-    DRAWER_WIDTH:               @130,
-    GROWL_TYPE:                 @GROWL_TYPE_OSX,
+    HIST_DRAWER_WIDTH:          @240,
+    DRAWER_WIDTH:               @240,
     kMediaKeyUsingBundleIdentifiersDefaultsKey:
         [SPMediaKeyTap defaultMediaKeyUserBundleIdentifiers]
   };
@@ -281,12 +285,11 @@
 
 #pragma mark - NSWindowRestoration
 
-+ (BOOL)restoreWindowWithIdentifier:(NSString *)identifier
++ (void)restoreWindowWithIdentifier:(NSString *)identifier
                               state:(NSCoder *)state
                   completionHandler:(void (^)(NSWindow *, NSError *))done {
   [PlaybackController setPlayOnStart:NO];
   done(nil, nil);
-  return YES;
 }
 
 #pragma mark -
@@ -491,10 +494,15 @@
     if (sender != nil) {
       /* If we're not executing at process launch, then the menu bar will be shown
          but be unusable until we switch to another application and back to Hermes */
-      [[NSWorkspace sharedWorkspace] launchAppWithBundleIdentifier:@"com.apple.dock"
-                                                           options:NSWorkspaceLaunchDefault
-                                    additionalEventParamDescriptor:nil
-                                                  launchIdentifier:nil];
+      NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
+      NSURL *dockURL = [workspace URLForApplicationWithBundleIdentifier:@"com.apple.dock"];
+      if (dockURL != nil) {
+        NSWorkspaceOpenConfiguration *configuration =
+            [NSWorkspaceOpenConfiguration configuration];
+        [workspace openApplicationAtURL:dockURL
+                           configuration:configuration
+                       completionHandler:nil];
+      }
       [NSApp activateIgnoringOtherApps:YES];
     }
     [self updateDockIcon:sender];
@@ -532,40 +540,70 @@
   [self updateStatusItem:sender];
 }
 
-- (NSImage *) buildPlayPauseAlbumArtImage:(NSSize)size {
+- (NSImage *)buildPlayPauseAlbumArtImage:(NSSize)size {
+    // 1. Create a blank transparent base canvas to satisfy macOS window/dock padding requirements
+    NSImage *paddedIconCanvas = [[NSImage alloc] initWithSize:size];
     
-  NSImage *icon;
-
-  // Build base image
-  NSData *data = [playback lastImg];
-  icon = (data) ? [[NSImage alloc] initWithData:data] :
-                  [NSImage imageNamed:@"missing-album"];
-  [icon setSize:size];
-  
-  // draw the overlay image (if there is album art)
-  if (data && PREF_KEY_BOOL(ALBUM_ART_PLAY_PAUSE)) {
-    NSImage *overlay = [NSImage imageNamed:(playback.playing.isPlaying) ?
-                        @"play" : @"pause"];
+    // 2. Fetch the source album art image or fallback asset
+    NSData *data = [playback lastImg];
+    NSImage *baseArtwork = (data) ? [[NSImage alloc] initWithData:data] :
+                                    [NSImage imageNamed:@"missing-album"];
     
-    int playPauseSize = size.width * 2 / 3;
-    int playPauseOffset = (size.width - playPauseSize)/ 2;
+    // Calculate standard macOS safe zone dimensions (81.25% of absolute width/height)
+    CGFloat safeSize = size.width * 0.8125;
+    CGFloat canvasPadding = (size.width - safeSize) / 2.0;
+    NSRect safeContentRect = NSMakeRect(canvasPadding, canvasPadding, safeSize, safeSize);
     
-    NSSize overlaySize = {.width = playPauseSize, .height = playPauseSize};
-    [overlay setSize:overlaySize];
+    [paddedIconCanvas lockFocus];
     
-    [icon lockFocus];
-    CGContextSetShadowWithColor([NSGraphicsContext currentContext].CGContext,
-                                CGSizeMake(0, 0), 120, [NSColor whiteColor].CGColor);
-    [overlay drawInRect:NSMakeRect(playPauseOffset, playPauseOffset,
-                                   [overlay size].width, [overlay size].height)
-               fromRect:NSZeroRect
-              operation:NSCompositeSourceOver
-               fraction:1.0];
-    [icon unlockFocus];
-  }
-  
-  return icon;
+    // Clear background to keep the padding area perfectly transparent
+    [[NSColor clearColor] set];
+    NSRectFill(NSMakeRect(0, 0, size.width, size.height));
+    
+    // 3. Draw a rounded clip path over the safe zone to ensure neat album corners
+    // macOS rounded icon corner radius is roughly 22.3% of the target canvas size
+    CGFloat cornerRadius = safeSize * 0.223;
+    NSBezierPath *clipPath = [NSBezierPath bezierPathWithRoundedRect:safeContentRect
+                                                             xRadius:cornerRadius
+                                                             yRadius:cornerRadius];
+    
+    // Save graphics state before applying clip so it doesn't limit the overlay shadow bounds
+    [NSGraphicsContext saveGraphicsState];
+    [clipPath addClip];
+    
+    // Draw base album artwork scaled to fit the rounded safe zone bounds
+    [baseArtwork drawInRect:safeContentRect
+                   fromRect:NSZeroRect
+                  operation:NSCompositingOperationSourceOver
+                   fraction:1.0];
+                   
+    [NSGraphicsContext restoreGraphicsState];
+    
+    // 4. Draw the play/pause overlay image inside the safe zone bounds
+    if (data && PREF_KEY_BOOL(ALBUM_ART_PLAY_PAUSE)) {
+        NSImage *overlay = [NSImage imageNamed:(playback.playing.isPlaying) ? @"play" : @"pause"];
+        
+        // Scale play/pause icon relative to the padded safe content frame size (not the full canvas)
+        CGFloat playPauseSize = safeSize * (2.0 / 3.0);
+        CGFloat playPauseOffset = canvasPadding + (safeSize - playPauseSize) / 2.0;
+        
+        // Configure shadow properties natively matching modern CoreGraphics context parameters
+        CGContextRef currentContext = [NSGraphicsContext currentContext].CGContext;
+        CGContextSetShadowWithColor(currentContext, CGSizeMake(0, 0), 12.0, [NSColor whiteColor].CGColor);
+        
+        NSRect overlayRect = NSMakeRect(playPauseOffset, playPauseOffset, playPauseSize, playPauseSize);
+        
+        [overlay drawInRect:overlayRect
+                   fromRect:NSZeroRect
+                  operation:NSCompositingOperationSourceAtop
+                   fraction:0.50];
+    }
+    
+    [paddedIconCanvas unlockFocus];
+    return paddedIconCanvas;
 }
+
+
 
 - (IBAction) updateDockIcon:(id)sender {
   if (PREF_KEY_BOOL(DOCK_ICON_ALBUM_ART)) {
@@ -804,17 +842,17 @@
       return NO;
 
     NSInteger openDrawer = [PREF_KEY_VALUE(OPEN_DRAWER) integerValue];
-    NSCellStateValue state = NSOffState;
+    NSControlStateValue state = NSControlStateValueOff;
     if (action == @selector(showHistoryDrawer:)) {
       if (openDrawer == DRAWER_NONE_HIST)
-        state = NSMixedState;
+        state = NSControlStateValueMixed;
       else if (openDrawer == DRAWER_HISTORY)
-        state = NSOnState;
+        state = NSControlStateValueOn;
     } else if (action == @selector(showStationsDrawer:)) {
       if (openDrawer == DRAWER_NONE_STA)
-        state = NSMixedState;
+        state = NSControlStateValueMixed;
       else if (openDrawer == DRAWER_STATIONS)
-        state = NSOnState;
+        state = NSControlStateValueOn;
     } else {
       if (openDrawer == DRAWER_HISTORY || openDrawer == DRAWER_STATIONS)
         [menuItem setTitle:@"Hide Drawer"];

@@ -1,4 +1,5 @@
-@interface AuthController : NSObject {
+@interface AuthController : NSObject <NSControlTextEditingDelegate,
+                                      NSMenuItemValidation> {
   IBOutlet NSView *view;
 
   // Fields of the authentication view

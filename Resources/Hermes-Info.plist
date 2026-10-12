@@ -38,7 +38,7 @@
 	<key>NSAppleScriptEnabled</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>© 2011–2017 Hermes contributors</string>
+	<string>© 2011–2026 Hermes contributors</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
@@ -47,15 +47,5 @@
 	<true/>
 	<key>OSAScriptingDefinition</key>
 	<string>Hermes.sdef</string>
-	<key>SUAllowsAutomaticUpdates</key>
-	<true/>
-	<key>SUEnableAutomaticChecks</key>
-	<true/>
-	<key>SUFeedURL</key>
-	<string>https://raw.githubusercontent.com/HermesApp/HermesApp.github.io/master/versions.xml</string>
-	<key>SUPublicDSAKeyFile</key>
-	<string>dsa_pub.pem</string>
-	<key>SUShowReleaseNotes</key>
-	<true/>
 </dict>
 </plist>

@@ -8,7 +8,7 @@
 @class FileReader;
 @class Song;
 
-@interface HistoryController : NSObject {
+@interface HistoryController : NSObject <NSWindowDelegate> {
   IBOutlet NSCollectionView *collection;
   FileReader *reader;
 
@@ -18,7 +18,7 @@
   IBOutlet NSButton *lyrics;
   IBOutlet NSButton *like;
   IBOutlet NSButton *dislike;
-  IBOutlet NSDrawer *drawer;
+  IBOutlet NSPanel *historyPanel;
   IBOutlet NSProgressIndicator *spinner;
 }
 

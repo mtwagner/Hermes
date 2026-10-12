@@ -11,3 +11,11 @@
 @interface HermesMainWindow : NSWindow
 
 @end
+
+@interface HermesPanel : NSPanel {
+  BOOL draggingParentWindow;
+  NSPoint dragStartScreenLocation;
+  NSPoint parentStartOrigin;
+}
+
+@end

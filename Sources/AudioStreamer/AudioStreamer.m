@@ -600,6 +600,8 @@ static void ASReadStreamCallBack(CFReadStreamRef aStream, CFStreamEventType even
  *
  * @return YES if the stream was opened, or NO if it failed to open
  */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (BOOL)openReadStream {
   NSAssert(stream == NULL, @"Download stream already initialized");
 
@@ -698,6 +700,7 @@ static void ASReadStreamCallBack(CFReadStreamRef aStream, CFStreamEventType even
 
   return YES;
 }
+#pragma clang diagnostic pop
 
 //
 // handleReadFromStream:eventType:
@@ -749,8 +752,11 @@ static void ASReadStreamCallBack(CFReadStreamRef aStream, CFStreamEventType even
 
   /* Read off the HTTP headers into our own class if we haven't done so */
   if (!httpHeaders) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     CFTypeRef message =
         CFReadStreamCopyProperty(stream, kCFStreamPropertyHTTPResponseHeader);
+#pragma clang diagnostic pop
     httpHeaders = (__bridge_transfer NSDictionary *)
         CFHTTPMessageCopyAllHeaderFields((CFHTTPMessageRef) message);
     CFRelease(message);

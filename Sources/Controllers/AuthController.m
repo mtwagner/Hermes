@@ -86,7 +86,17 @@
 /* Show the authentication view */
 - (void) show {
   [HMSAppDelegate setCurrentView:view];
+  
+  NSString *savedUsername = [HMSAppDelegate getSavedUsername];
+  if (savedUsername == nil || [savedUsername isEqualToString:@""]) {
+    [username setStringValue:savedUsername];
+  }
   [username becomeFirstResponder];
+  
+  NSString *savedPassword = [HMSAppDelegate getSavedPassword];
+  if (savedPassword == nil || [savedPassword isEqualToString:@""]) {
+    [password setStringValue:savedPassword];
+  }
   
   [self updateLoginEnabled];
 }

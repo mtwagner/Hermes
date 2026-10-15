@@ -295,7 +295,7 @@
             </items>
             <point key="canvasLocation" x="127" y="-554"/>
         </menu>
-        <window title="Hermes" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" appearanceType="aqua" frameAutosaveName="Preferences" animationBehavior="default" titlebarAppearsTransparent="YES" id="371" userLabel="Main Window" customClass="HermesMainWindow">
+        <window title="Hermes" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="Preferences" animationBehavior="default" titlebarAppearsTransparent="YES" id="371" userLabel="Main Window" customClass="HermesMainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="300" y="434" width="240" height="294"/>
             <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1410"/>
@@ -318,44 +318,44 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
             </view>
             <toolbar key="toolbar" implicitIdentifier="523691DA-3184-4F47-A885-9465F8ED1820" showsBaselineSeparator="NO" prefersToBeShown="NO" displayMode="iconOnly" sizeMode="regular" id="768">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="93E09D6C-9E59-4A3C-A062-D1300904AE9D" label="Play" paletteLabel="Play/Pause" toolTip="Play/pause the current song" tag="-1" image="play" id="776">
+                    <toolbarItem implicitItemIdentifier="93E09D6C-9E59-4A3C-A062-D1300904AE9D" label="Play" paletteLabel="Play/Pause" toolTip="Play/Pause the Current Song" tag="-1" image="NSTouchBarPlayPauseTemplate" id="776">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="playpause:" target="835" id="854"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="C1F73AAE-CA9B-4AE4-84F0-6FD469CA5403" label="Next Song" paletteLabel="Next Song" toolTip="Skip current song" tag="-1" image="fast_forward" id="777">
+                    <toolbarItem implicitItemIdentifier="C1F73AAE-CA9B-4AE4-84F0-6FD469CA5403" label="Next Song" paletteLabel="Next Song" toolTip="Skip  Current Song" tag="-1" image="NSTouchBarSkipAheadTemplate" id="777">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="next:" target="835" id="853"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="63378708-9425-4BEA-BDC4-0A119EA2829F" label="History" paletteLabel="History/Stations" toolTip="Show playback history" tag="-1" image="history" id="1328">
+                    <toolbarItem implicitItemIdentifier="63378708-9425-4BEA-BDC4-0A119EA2829F" label="History" paletteLabel="History/Stations" toolTip="Show Song History" tag="-1" image="clock.fill" catalog="system" id="1328">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="toggleDrawerContent:" target="494" id="2226"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="A449647C-5E3D-4B0A-A7A9-25D95931BEAA" explicitItemIdentifier="like" label="Like" paletteLabel="Like" toolTip="Like current song" tag="-1" image="thumbup" selectable="YES" id="818">
-                        <size key="minSize" width="19" height="22"/>
-                        <size key="maxSize" width="19" height="22"/>
+                    <toolbarItem implicitItemIdentifier="A449647C-5E3D-4B0A-A7A9-25D95931BEAA" explicitItemIdentifier="like" label="Like" paletteLabel="Like" toolTip="Like Current Song" tag="-1" image="hand.thumbsup.fill" catalog="system" selectable="YES" id="818">
+                        <size key="minSize" width="22" height="22"/>
+                        <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="like:" target="835" id="852"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="2C8D8643-12E0-4455-B548-CE63FB4051DD" label="Dislike" paletteLabel="Dislike" toolTip="Dislike current song" tag="-1" image="thumbdown" id="819">
-                        <size key="minSize" width="18" height="22"/>
-                        <size key="maxSize" width="18" height="22"/>
+                    <toolbarItem implicitItemIdentifier="2C8D8643-12E0-4455-B548-CE63FB4051DD" label="Dislike" paletteLabel="Dislike" toolTip="Dislike Current Song" tag="-1" image="hand.thumbsdown.fill" catalog="system" id="819">
+                        <size key="minSize" width="22" height="22"/>
+                        <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="dislike:" target="835" id="851"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="ACC84F8C-7985-4757-9D76-09A92CE90D5D" label="Tired" paletteLabel="Tired" toolTip="Don't play current song for a month" tag="-1" image="zzs" id="820">
-                        <size key="minSize" width="30" height="22"/>
-                        <size key="maxSize" width="30" height="22"/>
+                    <toolbarItem implicitItemIdentifier="ACC84F8C-7985-4757-9D76-09A92CE90D5D" label="Tired" paletteLabel="Tired" toolTip="Don't Play Current Song for a Month" tag="-1" image="sleep" catalog="system" id="820">
+                        <size key="minSize" width="22" height="22"/>
+                        <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="tired:" target="835" id="850"/>
                         </connections>
@@ -381,16 +381,16 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
         <window title="History" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="History" animationBehavior="default" id="Hst-Pnl-001" userLabel="History Window" customClass="HermesPanel">
             <windowStyleMask key="styleMask" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="680" y="171" width="297" height="274"/>
+            <rect key="contentRect" x="680" y="171" width="276" height="274"/>
             <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1410"/>
-            <view key="contentView" appearanceType="aqua" id="2155" userLabel="History Panel">
-                <rect key="frame" x="0.0" y="0.0" width="297" height="274"/>
+            <view key="contentView" id="2155" userLabel="History Panel">
+                <rect key="frame" x="0.0" y="0.0" width="276" height="274"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button toolTip="Go to selected artist's page on Pandora" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2195" userLabel="Artist Button">
-                        <rect key="frame" x="28" y="4" width="21" height="20"/>
+                        <rect key="frame" x="30" y="6" width="21" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="smallSquare" title="Gradient Button" bezelStyle="smallSquare" image="NSUser" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2196">
+                        <buttonCell key="cell" type="square" title="Gradient Button" bezelStyle="shadowlessSquare" image="NSUser" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2196">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -400,11 +400,11 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
                         </connections>
                     </button>
                     <button toolTip="Go to selected song's page on Pandora" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2204" userLabel="Song Button">
-                        <rect key="frame" x="8" y="4" width="21" height="20"/>
+                        <rect key="frame" x="8" y="6" width="21" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="smallSquare" title="Gradient Button" bezelStyle="smallSquare" image="music-note" imagePosition="only" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2205">
+                        <buttonCell key="cell" type="square" title="Gradient Button" bezelStyle="shadowlessSquare" image="music.note" catalog="system" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2205">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="smallSystem"/>
+                            <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <action selector="gotoSong:" target="1331" id="2208"/>
@@ -412,9 +412,9 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
                         </connections>
                     </button>
                     <button toolTip="Go to selected album's page on Pandora" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2197" userLabel="Album Button">
-                        <rect key="frame" x="48" y="4" width="21" height="20"/>
+                        <rect key="frame" x="52" y="6" width="21" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="smallSquare" title="Gradient Button" bezelStyle="smallSquare" image="cd" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2198">
+                        <buttonCell key="cell" type="square" title="Gradient Button" bezelStyle="shadowlessSquare" image="record.circle.fill" catalog="system" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2198">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -424,9 +424,9 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
                         </connections>
                     </button>
                     <button toolTip="View selected song's lyrics" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2265" userLabel="Lyrics Button">
-                        <rect key="frame" x="68" y="4" width="21" height="20"/>
+                        <rect key="frame" x="74" y="6" width="21" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="smallSquare" title="Gradient Button" bezelStyle="smallSquare" image="NSFontPanel" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2266">
+                        <buttonCell key="cell" type="square" title="Gradient Button" bezelStyle="shadowlessSquare" image="a" catalog="system" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2266">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -436,10 +436,10 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
                         </connections>
                     </button>
                     <button toolTip="Dislike selected song" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2199" userLabel="Dislike Button">
-                        <rect key="frame" x="271" y="4" width="21" height="20"/>
+                        <rect key="frame" x="249" y="6" width="21" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="smallSquare" title="Gradient Button" bezelStyle="smallSquare" image="thumbdown" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2200">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                        <buttonCell key="cell" type="square" title="Gradient Button" bezelStyle="shadowlessSquare" image="hand.thumbsdown" catalog="system" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2200">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
@@ -448,10 +448,10 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
                         </connections>
                     </button>
                     <button toolTip="Like selected song" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2201" userLabel="Like Button">
-                        <rect key="frame" x="251" y="4" width="21" height="20"/>
+                        <rect key="frame" x="227" y="6" width="21" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="smallSquare" title="Gradient Button" bezelStyle="smallSquare" image="thumbup" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2202">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                        <buttonCell key="cell" type="square" title="Gradient Button" bezelStyle="shadowlessSquare" image="hand.thumbsup" catalog="system" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2202">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
@@ -459,19 +459,15 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
                             <binding destination="1444" name="enabled" keyPath="selectedObjects.@count" id="Vds-0j-LHV"/>
                         </connections>
                     </button>
-                    <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="2268">
-                        <rect key="frame" x="236" y="0.0" width="16" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    </progressIndicator>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="20" verticalPageScroll="20" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2160">
-                        <rect key="frame" x="0.0" y="30" width="298" height="246"/>
+                        <rect key="frame" x="0.0" y="31" width="277" height="245"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="5Gd-m0-JbG">
-                            <rect key="frame" x="1" y="1" width="296" height="244"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <rect key="frame" x="1" y="1" width="275" height="243"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <collectionView maxNumberOfRows="26" maxNumberOfColumns="1" selectable="YES" id="2161" customClass="HistoryCollectionView">
-                                    <rect key="frame" x="0.0" y="0.0" width="296" height="244"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="275" height="243"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="secondaryBackgroundColor" name="controlAlternatingRowColor" catalog="System" colorSpace="catalog"/>
@@ -489,13 +485,17 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="2163">
-                            <rect key="frame" x="279" y="1" width="17" height="244"/>
+                            <rect key="frame" x="259" y="1" width="17" height="243"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="2268">
+                        <rect key="frame" x="205" y="8" width="16" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </progressIndicator>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="706.5" y="-330"/>
+            <point key="canvasLocation" x="706" y="-330"/>
         </window>
         <window title="New Station" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="902">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -698,31 +698,31 @@ Gw
             <point key="canvasLocation" x="244" y="255.5"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="979"/>
-        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" appearanceType="aqua" frameAutosaveName="Hermes Preferences" animationBehavior="default" toolbarStyle="expanded" id="1112" userLabel="Preferences Window">
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="Hermes Preferences" animationBehavior="default" toolbarStyle="expanded" id="1112" userLabel="Preferences Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="362" height="451"/>
             <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1410"/>
             <view key="contentView" misplaced="YES" id="1113">
-                <rect key="frame" x="0.0" y="0.0" width="362" height="451"/>
+                <rect key="frame" x="0.0" y="0.0" width="362" height="436"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             </view>
             <toolbar key="toolbar" implicitIdentifier="BBFE9B90-E385-4C93-B760-9797FA2CE460" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="1535">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="8DA56A69-84EC-4744-ADD5-4591390ABFFD" explicitItemIdentifier="general" label="General" paletteLabel="General" toolTip="General Settings" tag="-1" image="NSPreferencesGeneral" selectable="YES" id="1543">
+                    <toolbarItem implicitItemIdentifier="8DA56A69-84EC-4744-ADD5-4591390ABFFD" explicitItemIdentifier="general" label="General" paletteLabel="General" toolTip="General Settings" tag="-1" image="gear" catalog="system" selectable="YES" id="1543">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="showGeneral:" target="1114" id="1613"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="B74C6DCB-FB79-41D0-BFDA-03352C376D63" explicitItemIdentifier="playback" label="Playback" paletteLabel="Playback" toolTip="Playback Settings" tag="-1" image="play" selectable="YES" id="1609">
+                    <toolbarItem implicitItemIdentifier="B74C6DCB-FB79-41D0-BFDA-03352C376D63" explicitItemIdentifier="playback" label="Playback" paletteLabel="Playback" toolTip="Playback Settings" tag="-1" image="play.square" catalog="system" selectable="YES" id="1609">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="showPlayback:" target="1114" id="1614"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="9EAA8F72-691E-4EA2-BD77-0CB194B01159" explicitItemIdentifier="network" label="Network" paletteLabel="Network" toolTip="Network Settings" tag="-1" image="NSNetwork" selectable="YES" id="1886">
+                    <toolbarItem implicitItemIdentifier="9EAA8F72-691E-4EA2-BD77-0CB194B01159" explicitItemIdentifier="network" label="Network" paletteLabel="Network" toolTip="Network Settings" tag="-1" image="network" catalog="system" selectable="YES" id="1886">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
@@ -819,16 +819,19 @@ Gw
         <customObject id="1114" userLabel="PreferencesController" customClass="PreferencesController">
             <connections>
                 <outlet property="general" destination="1610" id="1612"/>
+                <outlet property="login" destination="1202" id="p4C-ON-Qvh"/>
                 <outlet property="mediaKeysCheckbox" destination="1117" id="cu6-2o-Ziw"/>
                 <outlet property="mediaKeysLabel" destination="1550" id="8dv-nE-yQs"/>
                 <outlet property="network" destination="1919" id="2026"/>
                 <outlet property="notificationEnabled" destination="1827" id="2294"/>
+                <outlet property="password" destination="1207" id="Gmb-03-rco"/>
                 <outlet property="playback" destination="1616" id="1630"/>
                 <outlet property="proxyServerErrorMessage" destination="QeC-l0-JJ4" id="0F1-qJ-T5D"/>
                 <outlet property="statusItemShowAlbumArt" destination="28c-Js-E8a" id="bnJ-J9-PXc"/>
                 <outlet property="statusItemShowBlackAndWhiteIcon" destination="12375" id="zuN-q7-C3g"/>
                 <outlet property="statusItemShowColorIcon" destination="sIX-RA-vSL" id="3aM-50-A3G"/>
                 <outlet property="toolbar" destination="1535" id="1611"/>
+                <outlet property="username" destination="1208" id="ahd-Ur-ZEp"/>
                 <outlet property="window" destination="1112" id="2334"/>
             </connections>
         </customObject>
@@ -869,11 +872,11 @@ Gw
         <customObject id="2007" customClass="Scrobbler"/>
         <customObject id="2136" customClass="NetworkConnection"/>
         <view id="1202" userLabel="Auth View">
-            <rect key="frame" x="0.0" y="0.0" width="219" height="209"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <rect key="frame" x="0.0" y="0.0" width="362" height="209"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1208">
-                    <rect key="frame" x="20" y="142" width="179" height="22"/>
+                    <rect key="frame" x="20" y="142" width="322" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" placeholderString="Email" drawsBackground="YES" id="1213">
                         <font key="font" metaFont="system"/>
@@ -886,7 +889,7 @@ Gw
                     </connections>
                 </textField>
                 <secureTextField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1207">
-                    <rect key="frame" x="20" y="115" width="179" height="22"/>
+                    <rect key="frame" x="20" y="115" width="322" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Password" drawsBackground="YES" id="1214">
                         <font key="font" metaFont="system"/>
@@ -900,8 +903,35 @@ Gw
                         <action selector="authenticate:" target="659" id="1219"/>
                     </connections>
                 </secureTextField>
+                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="1204">
+                    <rect key="frame" x="23" y="89" width="16" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </progressIndicator>
+                <imageView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1203">
+                    <rect key="frame" x="18" y="51" width="26" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="error_icon" id="1217"/>
+                </imageView>
+                <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1796">
+                    <rect key="frame" x="21" y="172" width="124" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sign in to Pandora:" id="1797">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2305">
+                    <rect key="frame" x="49" y="20" width="296" height="55"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="2306">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1206">
-                    <rect key="frame" x="109" y="79" width="96" height="32"/>
+                    <rect key="frame" x="246" y="81" width="96" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Sign In" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1215">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -914,35 +944,8 @@ DQ
                         <action selector="authenticate:" target="659" id="1220"/>
                     </connections>
                 </button>
-                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="1204">
-                    <rect key="frame" x="23" y="89" width="16" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </progressIndicator>
-                <imageView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1203">
-                    <rect key="frame" x="18" y="51" width="26" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="error_icon" id="1217"/>
-                </imageView>
-                <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1796">
-                    <rect key="frame" x="17" y="172" width="124" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sign in to Pandora:" id="1797">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2305">
-                    <rect key="frame" x="49" y="20" width="153" height="55"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="2306">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
             </subviews>
-            <point key="canvasLocation" x="-1417" y="175"/>
+            <point key="canvasLocation" x="-886" y="195"/>
         </view>
         <customView id="1230" userLabel="Loading View">
             <rect key="frame" x="0.0" y="0.0" width="163" height="151"/>
@@ -1007,14 +1010,14 @@ DQ
                     </connections>
                 </slider>
                 <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1159">
-                    <rect key="frame" x="205" y="7" width="16" height="16"/>
+                    <rect key="frame" x="202" y="7" width="20" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="volume_up" id="1185"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="volume.3.fill" catalog="system" id="1185"/>
                 </imageView>
                 <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1157">
-                    <rect key="frame" x="68" y="7" width="16" height="16"/>
+                    <rect key="frame" x="70" y="7" width="20" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="volume_down" id="1187"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="volume.1.fill" catalog="system" id="1187"/>
                 </imageView>
                 <textField toolTip="Song Title" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1172" customClass="LabelHoverShowField">
                     <rect key="frame" x="18" y="275" width="204" height="17"/>
@@ -1143,6 +1146,7 @@ DQ
                     </connections>
                 </button>
             </subviews>
+            <point key="canvasLocation" x="-473" y="50"/>
         </customView>
         <collectionViewItem id="1440" customClass="HistoryItem">
             <connections>
@@ -1203,11 +1207,11 @@ DQ
             </connections>
         </arrayController>
         <customView id="1610" userLabel="General Preferences View">
-            <rect key="frame" x="0.0" y="0.0" width="362" height="380"/>
+            <rect key="frame" x="0.0" y="0.0" width="362" height="322"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1117">
-                    <rect key="frame" x="18" y="344" width="326" height="18"/>
+                    <rect key="frame" x="18" y="286" width="326" height="18"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Control playback with media keys" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1118">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1219,7 +1223,7 @@ DQ
                     </connections>
                 </button>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1550">
-                    <rect key="frame" x="36" y="314" width="308" height="28"/>
+                    <rect key="frame" x="36" y="256" width="308" height="28"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Use play/pause and next track keys to control Hermes from any application." id="1551">
                         <font key="font" metaFont="smallSystem"/>
@@ -1228,7 +1232,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2338">
-                    <rect key="frame" x="18" y="281" width="326" height="18"/>
+                    <rect key="frame" x="18" y="223" width="326" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Hide Dock icon and menus" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="2348">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1240,7 +1244,7 @@ DQ
                     </connections>
                 </button>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2354">
-                    <rect key="frame" x="36" y="251" width="308" height="28"/>
+                    <rect key="frame" x="36" y="193" width="308" height="28"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="When checked, control Hermes with the keyboard or its menu on the right side of the menu bar." id="2355">
                         <font key="font" metaFont="smallSystem"/>
@@ -1249,15 +1253,15 @@ DQ
                     </textFieldCell>
                 </textField>
                 <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="y6s-Gc-dec">
-                    <rect key="frame" x="12" y="100" width="338" height="5"/>
+                    <rect key="frame" x="12" y="42" width="338" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
                 <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="bjW-f8-vOq">
-                    <rect key="frame" x="12" y="303" width="338" height="5"/>
+                    <rect key="frame" x="12" y="245" width="338" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qU3-Mb-t5B">
-                    <rect key="frame" x="156" y="226" width="188" height="18"/>
+                    <rect key="frame" x="156" y="168" width="188" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Song title" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Jjy-wl-Erl">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1270,7 +1274,7 @@ DQ
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="12375">
-                    <rect key="frame" x="156" y="181" width="188" height="18"/>
+                    <rect key="frame" x="156" y="123" width="188" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="radio" title="B&amp;W icon and play/pause" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="12376">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1282,7 +1286,7 @@ DQ
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sIX-RA-vSL">
-                    <rect key="frame" x="156" y="203" width="188" height="18"/>
+                    <rect key="frame" x="156" y="145" width="188" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="radio" title="Color Hermes icon only" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="i1p-bV-vfc">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1294,7 +1298,7 @@ DQ
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28c-Js-E8a">
-                    <rect key="frame" x="156" y="159" width="188" height="18"/>
+                    <rect key="frame" x="156" y="101" width="188" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="radio" title="Album art" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="mnw-9k-8hv">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1306,7 +1310,7 @@ DQ
                     </connections>
                 </button>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cu3-Mz-UFU">
-                    <rect key="frame" x="36" y="227" width="118" height="17"/>
+                    <rect key="frame" x="36" y="169" width="118" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show in menu bar:" id="eNj-oy-3dc">
                         <font key="font" metaFont="system"/>
@@ -1314,12 +1318,8 @@ DQ
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="S4B-aI-Ikt">
-                    <rect key="frame" x="12" y="69" width="338" height="5"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </box>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2369">
-                    <rect key="frame" x="18" y="78" width="326" height="18"/>
+                    <rect key="frame" x="18" y="20" width="326" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Keep Hermes on top of all other windows" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2370">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1331,7 +1331,7 @@ DQ
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vFC-lf-ywe">
-                    <rect key="frame" x="18" y="129" width="326" height="18"/>
+                    <rect key="frame" x="18" y="71" width="326" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show album art in Dock" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BzU-zr-sam">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1348,7 +1348,7 @@ DQ
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gqd-Md-zJS">
-                    <rect key="frame" x="36" y="109" width="308" height="18"/>
+                    <rect key="frame" x="36" y="51" width="308" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show play/pause icon over album art" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xUP-vt-caX">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1373,7 +1373,7 @@ DQ
                     </connections>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="-886" y="534"/>
+            <point key="canvasLocation" x="-886" y="505"/>
         </customView>
         <customView id="1616" userLabel="Playback Preferences View">
             <rect key="frame" x="0.0" y="0.0" width="362" height="405"/>
@@ -1545,11 +1545,11 @@ DQ
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
             </subviews>
-            <point key="canvasLocation" x="-886" y="969"/>
+            <point key="canvasLocation" x="-886" y="968.5"/>
         </customView>
         <customView id="1919" userLabel="Network Preferences View">
             <rect key="frame" x="0.0" y="0.0" width="362" height="273"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <textField hidden="YES" focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QeC-l0-JJ4">
                     <rect key="frame" x="36" y="205" width="307" height="14"/>
@@ -1762,7 +1762,7 @@ DQ
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                             <clipView key="contentView" drawsBackground="NO" id="L6f-ko-ucI">
                                                 <rect key="frame" x="1" y="1" width="198" height="149"/>
-                                                <autoresizingMask key="autoresizingMask"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" indentationPerLevel="16" outlineTableColumn="1683" id="1679">
                                                         <rect key="frame" x="0.0" y="0.0" width="198" height="149"/>
@@ -1807,7 +1807,7 @@ DQ
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" drawsBackground="NO" id="lI6-Kh-VCf">
                                                 <rect key="frame" x="1" y="1" width="198" height="149"/>
-                                                <autoresizingMask key="autoresizingMask"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" indentationPerLevel="16" outlineTableColumn="1692" id="1688">
                                                         <rect key="frame" x="0.0" y="0.0" width="198" height="149"/>
@@ -2065,6 +2065,7 @@ DQ
                     </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="-1447" y="1328"/>
         </window>
         <menu title="Title" id="2308" userLabel="Status bar menu">
             <items>
@@ -2136,6 +2137,7 @@ DQ
                     </connections>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="-1636" y="593"/>
         </menu>
         <numberFormatter formatterBehavior="custom10_4" localizesFormat="NO" numberStyle="decimal" allowsFloats="NO" usesGroupingSeparator="NO" roundingMode="floor" minimumIntegerDigits="1" maximumIntegerDigits="5" id="EFh-JY-3EI" userLabel="Port Formatter">
             <real key="minimum" value="1"/>
@@ -2145,12 +2147,12 @@ DQ
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="377" y="171" width="276" height="274"/>
             <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1410"/>
-            <view key="contentView" id="Vuc-ra-cGX">
+            <view key="contentView" id="Vuc-ra-cGX" userLabel="Station Panel">
                 <rect key="frame" x="0.0" y="0.0" width="276" height="274"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button toolTip="Refresh station list" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6OB-nU-TRV">
-                        <rect key="frame" x="251" y="4" width="20" height="20"/>
+                    <button toolTip="Refresh station list" id="6OB-nU-TRV">
+                        <rect key="frame" x="250" y="6" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="square" title="Refresh Stations" bezelStyle="shadowlessSquare" image="NSRefreshTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="753-uW-K0v">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2160,10 +2162,10 @@ DQ
                             <action selector="refreshList:" target="537" id="3km-VB-gSM"/>
                         </connections>
                     </button>
-                    <button toolTip="Edit selected station" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wUE-Cl-Bh0">
-                        <rect key="frame" x="78" y="4" width="31" height="20"/>
+                    <button toolTip="Edit selected station" id="wUE-Cl-Bh0">
+                        <rect key="frame" x="82" y="6" width="31" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Edit" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rcN-Lh-Aex">
+                        <buttonCell key="cell" type="square" title="Edit" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rcN-Lh-Aex">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
@@ -2171,8 +2173,8 @@ DQ
                             <action selector="editSelected:" target="537" id="Qu5-Mo-vrs"/>
                         </connections>
                     </button>
-                    <button toolTip="Delete selected station" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="una-jL-q88">
-                        <rect key="frame" x="58" y="4" width="21" height="20"/>
+                    <button toolTip="Delete selected station" id="una-jL-q88">
+                        <rect key="frame" x="60" y="6" width="21" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="square" title="Remove Station" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wak-OO-FSy">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2182,10 +2184,10 @@ DQ
                             <action selector="deleteSelected:" target="537" id="3tH-HD-Bvd"/>
                         </connections>
                     </button>
-                    <button toolTip="Play selected station" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q53-RA-Ty6">
-                        <rect key="frame" x="8" y="4" width="21" height="20"/>
+                    <button toolTip="Play selected station" id="q53-RA-Ty6">
+                        <rect key="frame" x="8" y="6" width="21" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Play Station" bezelStyle="shadowlessSquare" image="play" imagePosition="only" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Vd-gq-KjJ">
+                        <buttonCell key="cell" type="square" title="Play Station" bezelStyle="shadowlessSquare" image="play.fill" catalog="system" imagePosition="only" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Vd-gq-KjJ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                             <string key="keyEquivalent" base64-UTF8="YES">
@@ -2196,8 +2198,8 @@ DQ
                             <action selector="playSelected:" target="537" id="PwX-0K-LLs"/>
                         </connections>
                     </button>
-                    <button toolTip="Add a new station" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Vi-fI-sxw">
-                        <rect key="frame" x="39" y="4" width="20" height="20"/>
+                    <button toolTip="Add a new station" id="3Vi-fI-sxw">
+                        <rect key="frame" x="39" y="6" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="square" title="Add Station" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="n9X-Q9-XTa">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2208,14 +2210,14 @@ DQ
                         </connections>
                     </button>
                     <scrollView toolTip="Station list" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="Kqr-tc-g4A">
-                        <rect key="frame" x="0.0" y="27" width="276" height="216"/>
+                        <rect key="frame" x="0.0" y="30" width="276" height="213"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="YGi-sa-eel">
-                            <rect key="frame" x="1" y="1" width="274" height="214"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <rect key="frame" x="1" y="1" width="274" height="211"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" id="CAC-qs-8xL" customClass="StationsTableView">
-                                    <rect key="frame" x="0.0" y="0.0" width="274" height="214"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="274" height="211"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -2266,12 +2268,12 @@ DQ
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="3pn-BM-2pQ">
-                        <rect key="frame" x="227" y="6" width="16" height="16"/>
+                    <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="3pn-BM-2pQ">
+                        <rect key="frame" x="227" y="8" width="16" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     </progressIndicator>
                     <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ah5-Up-hPr">
-                        <rect key="frame" x="-1" y="246" width="137" height="24"/>
+                        <rect key="frame" x="8" y="246" width="117" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="F8V-fV-2sN">
                             <font key="font" metaFont="system"/>
@@ -2285,6 +2287,20 @@ DQ
                         </connections>
                     </segmentedControl>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="wUE-Cl-Bh0" firstAttribute="bottom" secondItem="3Vi-fI-sxw" secondAttribute="bottom" id="0Fo-2V-hZz"/>
+                    <constraint firstItem="wUE-Cl-Bh0" firstAttribute="bottom" secondItem="6OB-nU-TRV" secondAttribute="bottom" id="25l-Fb-7ez"/>
+                    <constraint firstItem="wUE-Cl-Bh0" firstAttribute="centerY" secondItem="3pn-BM-2pQ" secondAttribute="centerY" id="5oE-UI-6cq"/>
+                    <constraint firstItem="wUE-Cl-Bh0" firstAttribute="top" secondItem="una-jL-q88" secondAttribute="top" id="5tr-DM-R9y"/>
+                    <constraint firstItem="wUE-Cl-Bh0" firstAttribute="leading" secondItem="Vuc-ra-cGX" secondAttribute="leading" constant="82" id="AU7-rS-C3V"/>
+                    <constraint firstItem="wUE-Cl-Bh0" firstAttribute="bottom" secondItem="una-jL-q88" secondAttribute="bottom" id="EKu-oF-6hm"/>
+                    <constraint firstItem="wUE-Cl-Bh0" firstAttribute="bottom" secondItem="q53-RA-Ty6" secondAttribute="bottom" id="QwI-3A-Wu3"/>
+                    <constraint firstItem="wUE-Cl-Bh0" firstAttribute="leading" secondItem="una-jL-q88" secondAttribute="trailing" constant="1" id="V5U-o9-yeE"/>
+                    <constraint firstItem="wUE-Cl-Bh0" firstAttribute="top" secondItem="q53-RA-Ty6" secondAttribute="top" id="WBp-pW-aA8"/>
+                    <constraint firstItem="wUE-Cl-Bh0" firstAttribute="top" secondItem="6OB-nU-TRV" secondAttribute="top" id="bhn-WN-NVf"/>
+                    <constraint firstItem="wUE-Cl-Bh0" firstAttribute="top" secondItem="Kqr-tc-g4A" secondAttribute="bottom" constant="4" id="nSe-p5-Aa6"/>
+                    <constraint firstItem="wUE-Cl-Bh0" firstAttribute="top" secondItem="3Vi-fI-sxw" secondAttribute="top" id="xUp-sC-AgD"/>
+                </constraints>
             </view>
             <point key="canvasLocation" x="371" y="-330"/>
         </window>
@@ -2293,23 +2309,28 @@ DQ
         <image name="NSAddTemplate" width="18" height="16"/>
         <image name="NSDescendingSortIndicator" width="9" height="9"/>
         <image name="NSFollowLinkFreestandingTemplate" width="19" height="19"/>
-        <image name="NSFontPanel" width="32" height="32"/>
-        <image name="NSNetwork" width="32" height="32"/>
-        <image name="NSPreferencesGeneral" width="32" height="32"/>
         <image name="NSRefreshTemplate" width="17" height="20"/>
         <image name="NSRemoveTemplate" width="18" height="4"/>
+        <image name="NSTouchBarPlayPauseTemplate" width="28" height="15"/>
+        <image name="NSTouchBarSkipAheadTemplate" width="30" height="15"/>
         <image name="NSUser" width="32" height="32"/>
-        <image name="cd" width="512" height="512"/>
+        <image name="a" catalog="system" width="12" height="12"/>
+        <image name="clock.fill" catalog="system" width="15" height="15"/>
         <image name="error_icon" width="128" height="128"/>
-        <image name="fast_forward" width="128" height="128"/>
-        <image name="history" width="450" height="450"/>
+        <image name="gear" catalog="system" width="17" height="16"/>
+        <image name="hand.thumbsdown" catalog="system" width="15" height="16"/>
+        <image name="hand.thumbsdown.fill" catalog="system" width="15" height="15"/>
+        <image name="hand.thumbsup" catalog="system" width="15" height="16"/>
+        <image name="hand.thumbsup.fill" catalog="system" width="15" height="15"/>
         <image name="missing-album" width="221" height="226"/>
-        <image name="music-note" width="260" height="352"/>
-        <image name="play" width="128" height="128"/>
-        <image name="thumbdown" width="47" height="58.560001373291016"/>
-        <image name="thumbup" width="49.439998626708984" height="58.080001831054688"/>
-        <image name="volume_down" width="128" height="128"/>
+        <image name="music.note" catalog="system" width="12" height="15"/>
+        <image name="network" catalog="system" width="15" height="15"/>
+        <image name="play.fill" catalog="system" width="12" height="13"/>
+        <image name="play.square" catalog="system" width="16" height="14"/>
+        <image name="record.circle.fill" catalog="system" width="15" height="15"/>
+        <image name="sleep" catalog="system" width="15" height="15"/>
+        <image name="volume.1.fill" catalog="system" width="16" height="14"/>
+        <image name="volume.3.fill" catalog="system" width="22" height="15"/>
         <image name="volume_up" width="128" height="128"/>
-        <image name="zzs" width="80" height="58"/>
     </resources>
 </document>

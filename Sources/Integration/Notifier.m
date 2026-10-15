@@ -92,7 +92,7 @@ static NSString * const NotifierActionDislike = @"dislike";
     }
     [center addNotificationRequest:request withCompletionHandler:nil];
   }];
-  NSLogd(@"Playing \"%@\" by %@ from the albume \"%@\"",
+  NSLogd(@"Playing \"%@\" by %@ from the album \"%@\"",
          song.title, song.artist, song.album);
 }
 

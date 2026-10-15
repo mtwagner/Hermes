@@ -42,7 +42,6 @@ static const CGFloat PANEL_BORDER_WIDTH = 3.0;
   historyPanel.contentView.layer.borderWidth = PANEL_BORDER_WIDTH;
   historyPanel.contentView.layer.borderColor = NSColor.separatorColor.CGColor;
   historyPanel.contentView.layer.cornerRadius = 0.0;
-  historyPanel.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
   historyPanel.delegate = self;
 }
 

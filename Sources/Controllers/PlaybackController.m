@@ -281,12 +281,12 @@ BOOL playOnStart = YES;
 - (void)playbackStateChanged: (NSNotification *)aNotification {
   if ([playing isPlaying]) {
     NSLogd(@"Stream playing: %@", playing.playingSong);
-    [playpause setImage:[NSImage imageNamed:@"pause"]];
+    [playpause setImage:[NSImage imageNamed:@"NSTouchBarPauseTemplate"]];
     [playpause setLabel:@"Pause"];
     [self startUpdatingProgress];
   } else if ([playing isPaused]) {
     NSLogd(@"Stream paused.");
-    [playpause setImage:[NSImage imageNamed:@"play"]];
+    [playpause setImage:[NSImage imageNamed:@"NSTouchBarPlayTemplate"]];
     [playpause setLabel:@"Play"];
     [self stopUpdatingProgress];
   }

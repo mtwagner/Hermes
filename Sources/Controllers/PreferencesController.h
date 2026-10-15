@@ -93,5 +93,4 @@
 - (IBAction) statusItemIconChanged:(id)sender;
 - (IBAction) bindMediaChanged: (id) sender;
 - (IBAction) show: (id) sender;
-
 @end

@@ -392,15 +392,17 @@
 
 - (void) historyShow {
   [history showDrawer];
-  [drawerToggle setImage:[NSImage imageNamed:@"radio"]];
-  [drawerToggle setToolTip: @"Show station list"];
+  NSImage *symbolImage = [NSImage imageWithSystemSymbolName:@"radio.fill" accessibilityDescription:@"Show Stations"];
+  [drawerToggle setImage:symbolImage];
+  [drawerToggle setToolTip: @"Show Stations"];
   drawerToggle.paletteLabel = drawerToggle.label = @"Stations";
 }
 
 - (void) stationsShow {
   [stations showDrawer];
-  [drawerToggle setImage:[NSImage imageNamed:@"history"]];
-  [drawerToggle setToolTip: @"Show song history"];
+  NSImage *symbolImage = [NSImage imageWithSystemSymbolName:@"clock.fill" accessibilityDescription:@"Show History"];
+  [drawerToggle setImage:symbolImage];
+  [drawerToggle setToolTip: @"Show History"];
   drawerToggle.paletteLabel = drawerToggle.label = @"History";
 }
 

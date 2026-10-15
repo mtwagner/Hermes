@@ -57,16 +57,29 @@
   [[self leftBarColor] setFill];
   NSRectFill(leftBarRect);
 
+  // Small gap between left and right for clarity.
   NSRect rightBarRect = barRect;
-  rightBarRect.origin.x = knobRect.origin.x;
-  rightBarRect.size.width = barRect.origin.x + barRect.size.width - knobRect.origin.x;
+  rightBarRect.origin.x = knobRect.origin.x + 1;
+  rightBarRect.size.width = barRect.origin.x + barRect.size.width - knobRect.origin.x - 1;
   [[self rightBarColor] setFill];
   NSRectFill(rightBarRect);
 }
 
-// colors from iTunes 12.4
+// colors from iTunes 12.4, or System Theme Color. 
 - (NSColor *)knobColor { return [NSColor blackColor]; }
-- (NSColor *)leftBarColor { return [NSColor colorWithGenericGamma22White:112/255. alpha:1]; }
-- (NSColor *)rightBarColor { return [NSColor colorWithGenericGamma22White:188/255. alpha:1]; }
+- (NSColor *)leftBarColor {
+  if (@available(macOS 10.14, *)) {
+      return [NSColor controlAccentColor];
+  } else {
+      return [NSColor colorWithGenericGamma22White:112/255. alpha:1];
+  }
+}
+- (NSColor *)rightBarColor {
+  if (@available(macOS 10.14, *)) {
+      return [[NSColor controlAccentColor] colorWithAlphaComponent:0.75];
+  } else {
+      return [NSColor colorWithGenericGamma22White:188/255. alpha:1];
+  }
+}
 
 @end

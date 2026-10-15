@@ -66,7 +66,6 @@ static const CGFloat PANEL_BORDER_WIDTH = 3.0;
   stations.contentView.layer.borderWidth = PANEL_BORDER_WIDTH;
   stations.contentView.layer.borderColor = NSColor.separatorColor.CGColor;
   stations.contentView.layer.cornerRadius = 0.0;
-  stations.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
   stations.delegate = self;
 }
 

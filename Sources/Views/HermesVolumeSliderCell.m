@@ -23,12 +23,28 @@
   leftRect.size.width = leftWidth;
   
   NSBezierPath *bar = [NSBezierPath bezierPathWithRoundedRect:rect xRadius:radius yRadius:radius];
-  [[NSColor colorWithGenericGamma22White:171/255. alpha:1] setFill];
+  [[self rightBarColor] setFill];
   [bar fill];
   
   NSBezierPath *barLeft = [NSBezierPath bezierPathWithRoundedRect: leftRect xRadius:radius yRadius:radius];
-  [[NSColor colorWithGenericGamma22White:103/255. alpha:1] setFill];
+  [[self leftBarColor] setFill];
   [barLeft fill];
+}
+
+- (NSColor *)leftBarColor {
+  if (@available(macOS 10.14, *)) {
+      return [NSColor controlAccentColor];
+  } else {
+      return [NSColor colorWithGenericGamma22White:112/255. alpha:1];
+  }
+}
+
+- (NSColor *)rightBarColor {
+  if (@available(macOS 10.14, *)) {
+      return [[NSColor controlAccentColor] colorWithAlphaComponent:0.75];
+  } else {
+      return [NSColor colorWithGenericGamma22White:188/255. alpha:1];
+  }
 }
 
 @end

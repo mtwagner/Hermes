@@ -632,8 +632,7 @@ static NSString *hierrs[] = {
   return [self sendAuthenticatedRequest:req];
 }
 
-#pragma mark Sort stations in UI
-
+#pragma mark Sort stations in UI (Ignore leading "The " in station name.
 - (void) sortStations:(NSInteger)sort {
   [stations sortUsingComparator:
    ^NSComparisonResult (Station *s1, Station *s2) {
@@ -642,8 +641,23 @@ static NSString *hierrs[] = {
      if ([s2 isQuickMix]) return NSOrderedDescending;
 
      NSInteger factor = (sort == SORT_NAME_DSC || sort == SORT_DATE_DSC) ? -1 : 1;
-     if (sort == SORT_NAME_ASC || sort == SORT_NAME_DSC)
-       return factor * [[s1 name] caseInsensitiveCompare:[s2 name]];
+     
+     if (sort == SORT_NAME_ASC || sort == SORT_NAME_DSC) {
+       // Helper block to clean the string for sorting purposes only
+       NSString* (^cleanName)(NSString *) = ^NSString* (NSString *name) {
+         if (!name) return @"";
+         // Look for "the " strictly at the beginning (anchored), case-insensitive
+         if ([name rangeOfString:@"the " options:NSCaseInsensitiveSearch | NSAnchoredSearch].location == 0) {
+           return [name substringFromIndex:4];
+         }
+         return name;
+       };
+
+       NSString *name1 = cleanName([s1 name]);
+       NSString *name2 = cleanName([s2 name]);
+
+       return factor * [name1 caseInsensitiveCompare:name2];
+     }
      
      if ([s1 created] < [s2 created]) {
        return factor * NSOrderedAscending;

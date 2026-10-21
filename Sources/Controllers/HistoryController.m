@@ -268,6 +268,8 @@ static const CGFloat PANEL_BORDER_WIDTH = 3.0;
         return;
       }
     }
+    
+    [self->spinner setHidden:YES];
     NSAlert *alert = [NSAlert alertWithError:err];
     alert.messageText = @"Couldn't open lyrics";
     alert.informativeText = [err localizedDescription];

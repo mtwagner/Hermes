@@ -105,7 +105,7 @@ static const CGFloat PANEL_BORDER_WIDTH = 3.0;
 
 - (void) showDrawer {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  NSInteger savedWidth = [defaults integerForKey:DRAWER_WIDTH];
+  NSInteger savedWidth = [defaults integerForKey:HIST_DRAWER_WIDTH];
   if (savedWidth > 0) {
     NSSize contentSize = stations.contentView.frame.size;
     contentSize.width = savedWidth;

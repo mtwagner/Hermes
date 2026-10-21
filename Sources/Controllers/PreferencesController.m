@@ -60,7 +60,6 @@
   NSRect windowFrame = [window frame];
   NSRect contentRect = [window contentRectForFrameRect:windowFrame];
   windowFrame.size.height = NSHeight(frame) + NSHeight(windowFrame) - NSHeight(contentRect);
-  windowFrame.size.width = NSWidth(frame);
   windowFrame.origin.y = NSMaxY([window frame]) - NSHeight(windowFrame);
   [window setFrame:windowFrame display:YES animate:YES];
 

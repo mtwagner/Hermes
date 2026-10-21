@@ -379,12 +379,12 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
         </window>
         <customObject id="420" customClass="NSFontManager"/>
         <window title="History" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="History" animationBehavior="default" titlebarAppearsTransparent="YES" id="Hst-Pnl-001" userLabel="History Window" customClass="HermesPanel">
-            <windowStyleMask key="styleMask" utility="YES" texturedBackground="YES"/>
+            <windowStyleMask key="styleMask" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="680" y="171" width="276" height="274"/>
+            <rect key="contentRect" x="680" y="171" width="289" height="274"/>
             <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1410"/>
             <view key="contentView" id="2155" userLabel="History Panel">
-                <rect key="frame" x="0.0" y="0.0" width="276" height="274"/>
+                <rect key="frame" x="0.0" y="0.0" width="289" height="274"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button toolTip="Go to selected artist's page on Pandora" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2195" userLabel="Artist Button">
@@ -426,7 +426,7 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
                     <button toolTip="View selected song's lyrics" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2265" userLabel="Lyrics Button">
                         <rect key="frame" x="74" y="6" width="21" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Gradient Button" bezelStyle="shadowlessSquare" image="character.square.fill" catalog="system" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2266">
+                        <buttonCell key="cell" type="square" title="Gradient Button" bezelStyle="shadowlessSquare" image="text.viewfinder" catalog="system" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2266">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -436,7 +436,7 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
                         </connections>
                     </button>
                     <button toolTip="Dislike selected song" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2199" userLabel="Dislike Button">
-                        <rect key="frame" x="249" y="6" width="21" height="20"/>
+                        <rect key="frame" x="262" y="6" width="21" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="square" title="Gradient Button" bezelStyle="shadowlessSquare" image="hand.thumbsdown" catalog="system" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2200">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -448,7 +448,7 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
                         </connections>
                     </button>
                     <button toolTip="Like selected song" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2201" userLabel="Like Button">
-                        <rect key="frame" x="227" y="6" width="21" height="20"/>
+                        <rect key="frame" x="240" y="6" width="21" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="square" title="Gradient Button" bezelStyle="shadowlessSquare" image="hand.thumbsup" catalog="system" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2202">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -460,14 +460,14 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
                         </connections>
                     </button>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="20" verticalPageScroll="20" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2160">
-                        <rect key="frame" x="0.0" y="31" width="277" height="245"/>
+                        <rect key="frame" x="0.0" y="31" width="290" height="245"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="5Gd-m0-JbG">
-                            <rect key="frame" x="1" y="1" width="275" height="243"/>
+                            <rect key="frame" x="1" y="1" width="288" height="243"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <collectionView maxNumberOfRows="26" maxNumberOfColumns="1" selectable="YES" id="2161" customClass="HistoryCollectionView">
-                                    <rect key="frame" x="0.0" y="0.0" width="275" height="243"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="288" height="243"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="secondaryBackgroundColor" name="controlAlternatingRowColor" catalog="System" colorSpace="catalog"/>
@@ -489,13 +489,13 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="2268">
-                        <rect key="frame" x="205" y="8" width="16" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="2268">
+                        <rect key="frame" x="216" y="8" width="16" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     </progressIndicator>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="341" y="-308"/>
+            <point key="canvasLocation" x="-296" y="-308"/>
         </window>
         <window title="New Station" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="902">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -1102,7 +1102,7 @@ DQ
                     <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="9lo-wA-JHN" customClass="MusicProgressSliderCell"/>
                 </slider>
             </subviews>
-            <point key="canvasLocation" x="39" y="79"/>
+            <point key="canvasLocation" x="39" y="41"/>
         </view>
         <customView id="1251" userLabel="Error View">
             <rect key="frame" x="0.0" y="0.0" width="362" height="431"/>
@@ -2299,7 +2299,7 @@ DQ
                     <constraint firstItem="wUE-Cl-Bh0" firstAttribute="top" secondItem="3Vi-fI-sxw" secondAttribute="top" id="xUp-sC-AgD"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="348" y="62"/>
+            <point key="canvasLocation" x="354" y="-308"/>
         </window>
     </objects>
     <resources>
@@ -2311,7 +2311,6 @@ DQ
         <image name="NSTouchBarPlayPauseTemplate" width="28" height="15"/>
         <image name="NSTouchBarSkipAheadTemplate" width="30" height="15"/>
         <image name="NSUser" width="32" height="32"/>
-        <image name="character.square.fill" catalog="system" width="16" height="14"/>
         <image name="clock.fill" catalog="system" width="15" height="15"/>
         <image name="error_icon" width="128" height="128"/>
         <image name="forward.end.alt" catalog="system" width="23" height="12"/>
@@ -2332,6 +2331,7 @@ DQ
         <image name="speaker.plus" catalog="system" width="20" height="14"/>
         <image name="speaker.wave.1.fill" catalog="system" width="16" height="14"/>
         <image name="speaker.wave.3.fill" catalog="system" width="22" height="15"/>
+        <image name="text.viewfinder" catalog="system" width="17" height="15"/>
         <image name="volume_up" width="128" height="128"/>
     </resources>
 </document>

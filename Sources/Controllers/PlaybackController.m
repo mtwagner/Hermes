@@ -529,6 +529,13 @@ BOOL playOnStart = YES;
   [self rate:song as:YES];
 }
 
+/* Lyrics button was hit */
+- (IBAction)lyrics: (id) sender {
+  Song *song = [playing playingSong];
+  if (!song) return;
+  [HMSAppDelegate showLyricsForSong:song];
+}
+
 /* Dislike button was hit */
 - (IBAction)dislike: (id) sender {
   Song *song = [playing playingSong];

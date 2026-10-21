@@ -62,6 +62,7 @@
 
 - (void) closeNewStationSheet;
 - (void) showNewStationSheet;
+- (void) showLyricsForSong:(Song *) song;
 - (void) saveUsername: (NSString*) username password: (NSString*) password;
 - (void) setCurrentView: (NSView*) view;
 - (void) showLoader;

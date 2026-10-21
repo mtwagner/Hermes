@@ -215,6 +215,11 @@
                                     <action selector="tired:" target="835" id="886"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Lyrics" image="text.viewfinder" catalog="system" keyEquivalent="y" id="ERg-GU-TTo">
+                                <connections>
+                                    <action selector="lyrics:" target="835" id="BxH-uZ-zFZ"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="2402"/>
                             <menuItem title="Increase Volume" image="speaker.plus" catalog="system" keyEquivalent="" id="2397">
                                 <connections>
@@ -358,6 +363,13 @@ MgA3AEkATABRAFMAXQBjAGwAcwB4AIAAlQCXAJkAmwCdAKcArACxALwAvwDBAMMAxQDKANUA3gDmAOkA
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="tired:" target="835" id="850"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="CD46870C-8C8A-42AD-9A33-9391A0E8A63D" label="Lyrics" paletteLabel="Lyrics" tag="-1" image="text.viewfinder" catalog="system" bordered="YES" id="4iL-yc-hAV">
+                        <size key="minSize" width="33" height="24"/>
+                        <size key="maxSize" width="33" height="24"/>
+                        <connections>
+                            <action selector="lyrics:" target="835" id="Gjh-cq-xXI"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="774"/>

@@ -10,7 +10,6 @@
 #import "FMEngine/NSString+FMEngine.h"
 #import "PlaybackController.h"
 #import "PreferencesController.h"
-#import "URLConnection.h"
 #import "Notifications.h"
 
 #define HISTORY_LIMIT 20
@@ -250,95 +249,9 @@ static const CGFloat PANEL_BORDER_WIDTH = 3.0;
 - (IBAction) showLyrics:(id)sender {
   Song* s = [self selectedItem];
   if (s == nil) return;
-    
-  NSString *surl =
-    [NSString
-      stringWithFormat:@"https://lrclib.net/api/get?artist_name=%@&track_name=%@",
-      [[s artist] urlEncoded], [[s title] urlEncoded]];
-  NSURL *url = [NSURL URLWithString:surl];
-  NSURLRequest *req = [NSURLRequest requestWithURL:url];
-  NSLogd(@"Fetch: %@", surl);
-  URLConnection *conn = [URLConnection connectionForRequest:req
-                                          completionHandler:^(NSData *d, NSError *err) {
-    if (err == nil) {
-      NSDictionary *object = [NSJSONSerialization JSONObjectWithData:d options:0 error:&err];
-      if (err == nil && object != nil) {
-        // Not found or Busy.
-        if ([object[@"statusCode"] intValue] == 404 || [object[@"statusCode"] intValue] == 503){
-          [self->spinner setHidden:YES];
-          return;
-        }
-        
-        // Get Artist, Track and Lyrics
-        NSString *artistName = object[@"artistName"];
-        NSString *trackName = object[@"trackName"];
-        NSString *plainLyrics = object[@"plainLyrics"] == [NSNull null] ? nil : object[@"plainLyrics"]; // Can be null in JSON. 
-        
-        // Open Text File
-        if (trackName && plainLyrics && artistName) {
-          NSString *fileName = [NSString stringWithFormat: @"	%@ by %@.txt", trackName, artistName];
-          [self createTextFileWithContent:plainLyrics
-                                 fileName:fileName];
-        }
-        [self->spinner setHidden:YES];
-        return;
-      }
-    }
-    
-    [self->spinner setHidden:YES];
-    NSAlert *alert = [NSAlert alertWithError:err];
-    alert.messageText = @"Couldn't open lyrics";
-    alert.informativeText = [err localizedDescription];
-    [alert beginSheetModalForWindow:[HMSAppDelegate window] completionHandler:nil];
-  }];
-
-  [conn setHermesProxy];
-  [conn start];
   [spinner setHidden:NO];
+  [HMSAppDelegate showLyricsForSong:s];
+  [spinner setHidden:YES];
 }
-
-- (void)createTextFileWithContent:(NSString *)content fileName:(NSString *)fileName {
-    // Construct temp target file URL
-    NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:fileName];
-    NSURL *fileURL = [NSURL fileURLWithPath:filePath];
-    
-    // Write content to disk
-    NSError *writeError = nil;
-    BOOL success = [content writeToFile:filePath
-                             atomically:YES
-                               encoding:NSUTF8StringEncoding
-                                  error:&writeError];
-    
-    if (!success) {
-        NSLog(@"Failed to write file: %@", writeError.localizedDescription);
-        return;
-    }
-    
-    // Notify Finder's file coordinator to rebuild the system metadata cache for this file
-    [[NSWorkspace sharedWorkspace] noteFileSystemChanged:filePath];
-  
-    // Locate TextEdit programmatically via its bundle identifier
-    NSURL *appURL = [[NSWorkspace sharedWorkspace] URLForApplicationWithBundleIdentifier:@"com.apple.TextEdit"];
-    if (!appURL) {
-        NSLog(@"Could not locate TextEdit application.");
-        return;
-    }
-    
-    // Initialize an open configuration instance
-    NSWorkspaceOpenConfiguration *configuration = [NSWorkspaceOpenConfiguration configuration];
-    
-    // Trigger the asynchronous non-deprecated workspace call
-    [[NSWorkspace sharedWorkspace] openURLs:@[fileURL]
-                       withApplicationAtURL:appURL
-                              configuration:configuration
-                          completionHandler:^(NSRunningApplication * _Nullable app, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"Asynchronous open failed: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Successfully opened file with application: %@", app.localizedName);
-        }
-    }];
-}
-
 
 @end

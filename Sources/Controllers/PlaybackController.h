@@ -81,6 +81,7 @@
 - (IBAction)like: (id) sender;
 - (IBAction)dislike: (id) sender;
 - (IBAction)tired: (id) sender;
+- (IBAction)lyrics: (id) sender;
 - (IBAction)loadMore: (id)sender;
 - (IBAction)songURL: (id)sender;
 - (IBAction)artistURL: (id)sender;
